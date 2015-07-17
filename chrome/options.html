@@ -1,0 +1,27 @@
+h3<!DOCTYPE html>
+<html>
+<head>
+<title>NetaccessOptions</title>
+<link href='http://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="options.css">
+</head>
+<body>
+<div class="options_bg"></div>
+<div class="Form">
+<h2 class="Form-heading"><center>Please enter your details</center></h2>
+<span id="invi"></span>
+<h3 class="Form-heading">Username:</b>
+<input class="Form-input" type="text" id="username2" style="width:230px;"><br>
+<h3 class="Form-heading">Password:</b>
+<input class="Form-input" type="password" id="password2" style="width:230px;"><br>
+<h3 class="Form-heading">Default Period:</b>
+<input type="radio" id="r1" name="time" value="1"> One Hour
+<input type="radio" id="r2" name="time" value="2" checked> One Day<br>
+<input type="radio" id="r3" name="refresh" value="1" checked> Refresh netaccess
+<input type="radio" id="r4" name="refresh" value="0"> Don't refresh<br>
+<button class="Form-submit" id="save">Save</button>
+</div>
+<script src="jquery.min.js"></script>
+<script src="options.js"></script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!--<!DOCTYPE html>
+<title>Waiting for Magical Unicorns</title>
+<progress id="p"></progress>
+<script>
+  /*var progressBar = document.getElementById("p"),
+      client = new XMLHttpRequest();
+  client.open("GET", "icon.png",true);
+  client.onprogress = function(pe) {
+    if(pe.lengthComputable) {
+      progressBar.max = pe.total;
+      progressBar.value = pe.loaded;
+    }
+  }
+  client.onloadend = function(pe) {
+    progressBar.value = pe.loaded;
+  }
+  client.send();
+  var progressBar = document.getElementById("p");
+  var xhr = new XMLHttpRequest();
+xhr.open('GET', 'icon.png', true);
+xhr.responseType = 'blob';
+
+xhr.onload = function(e) {
+  if (this.status == 200) {
+    // Note: .response instead of .responseText
+    var blob = new Blob([this.response], {type: 'image/png'});
+  }
+xhr.onprogress = function(pe) {
+    if(pe.lengthComputable) {
+      progressBar.max = pe.total;
+      progressBar.value = pe.loaded;
+    }
+  }
+  xhr.onloadend = function(pe) {
+    progressBar.value = pe.loaded;
+  }
+};
+
+xhr.send();*/
+</script>-->
+
+<script>
+/*Image.prototype.load = function( url, callback ) {
+    var thisImg = this,
+        xmlHTTP = new XMLHttpRequest();
+
+    thisImg.completedPercentage = 0;
+
+    xmlHTTP.open( 'GET', url , true );
+    xmlHTTP.responseType = 'arraybuffer';
+    xmlHTTP.setRequestHeader("Access-Control-Allow-Origin", "*");
+    xmlHTTP.onload = function( e ) {
+        var h = xmlHTTP.getAllResponseHeaders(),
+            m = h.match( /^Content-Type\:\s*(.*?)$/mi ),
+            mimeType = m[ 1 ] || 'image/png';
+            // Remove your progress bar or whatever here. Load is done.
+
+        var blob = new Blob( [ this.response ], { type: mimeType } );
+        thisImg.src = window.URL.createObjectURL( blob );
+        if ( callback ) callback( this );
+    };
+
+    xmlHTTP.onprogress = function( e ) {
+        if ( e.lengthComputable )
+            thisImg.completedPercentage = parseInt( ( e.loaded / e.total ) * 100 );
+            console.log(thisImg.completedPercentage);
+        // Update your progress bar here. Make sure to check if the progress value
+        // has changed to avoid spamming the DOM.
+        // Something like: 
+        // if ( prevValue != thisImage completedPercentage ) display_progress();
+    };
+
+    xmlHTTP.onloadstart = function() {
+        // Display your progress bar here, starting at 0
+        thisImg.completedPercentage = 0;
+        console.log(thisImg.completedPercentage);
+    };
+
+    xmlHTTP.onloadend = function() {
+        // You can also remove your progress bar here, if you like.
+        thisImg.completedPercentage = 100;
+        console.log(thisImg.completedPercentage);
+    }
+
+    xmlHTTP.send();
+};
+var img = new Image();
+img.load("http://www.voiceable.org/wp-content/uploads/2011/09/pixars_up_hd_wide-wide.jpg");
+document.body.appendChild(img);*/
+var startTime, endTime;
+//var downloadSize = 19892;var imageAddr = "icon.png";
+var downloadSize = 1380194;var imageAddr = "http://www.voiceable.org/wp-content/uploads/2011/09/pixars_up_hd_wide-wide.jpg"+"?n="+Math.random();
+//var downloadSize = 5616998;var imageAddr = "http://www.tranquilmusic.ca/images/cats/Cat2.JPG";
+var download = new Image();
+download.onload = function () {
+    endTime = (new Date()).getTime();
+    showResults();
+}
+download.onprogress = function() {
+    document.body.innerHTML = "Loading....please wait...";
+}
+startTime = (new Date()).getTime();
+download.src = imageAddr;
+
+function showResults() {
+    var duration = (endTime - startTime) / 1000;
+    var bitsLoaded = downloadSize * 8;
+    var speedBps = (bitsLoaded / duration).toFixed(2);
+    var speedKbps = (speedBps / 1024).toFixed(2);
+    var speedMbps = (speedKbps / 1024).toFixed(2);
+    document.body.innerHTML = "<h2>Your connection speed is:<br>" + 
+           speedBps + " bps<br>"   + 
+           speedKbps + " kbps<br>" + 
+           speedMbps + " Mbps<br>Image address is :" + imageAddr ;
+}
+</script>
