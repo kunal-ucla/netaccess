@@ -8,14 +8,14 @@
 	width: 100%;
 	z-index: -1;
 	-webkit-filter: blur(13px);
-    -moz-filter: blur(13px);
-    -o-filter: blur(13px);
-    -ms-filter: blur(13px);
-    filter: blur(13px);
+    	-moz-filter: blur(13px);
+    	-o-filter: blur(13px);
+   	 -ms-filter: blur(13px);
+   	filter: blur(13px);
 }
 body {
 	font-family: Dosis !important;
-	margin-top: -20px;
+	margin-top: -30px;
 	padding-bottom: 40px;
 }
 input:focus {

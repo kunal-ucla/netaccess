@@ -4,7 +4,7 @@ body {
     margin: 0;
 }
 button.act {
-    background-color: #7fffd4 !important;
+    background-color: green !important;
     box-shadow: inset 0px -5px 0px 0px #33CC33 !important;
     color: black !important;
 }
@@ -13,9 +13,7 @@ button.act:hover {
     color: black !important;
 }
 button {
-    border: 0;
     margin: 0;
-    margin-top: -5px;
     padding: 1px;
     display: block;
     float: left;
@@ -23,16 +21,18 @@ button {
     max-height: 50px;
     cursor: pointer;
     font-family: Dosis;
+    background-color: transparent;
 }
 button:focus {
     outline: 0;
 }
 button.default:hover {
-    box-shadow: inset 0px 50px 0px 0px #0099FF;
     color: white;
+    border:none;
 }
 button.default {
-    box-shadow: inset 0px -5px 0px 0px grey;
+    border: 1px solid red;
+
 }
 button.but {
     height: 45px !important;
@@ -42,11 +42,11 @@ button.butt:hover {
     background-color: #faebd7 !important;
 }
 button.active {
-    box-shadow: inset 0px -5px 0px 0px #33CC33 !important;
+    background-image: url('Drawing.png');
 }
 button:hover {
     background-color: grey !important;
-    transition: 0.5s;
+    /*transition: 0.5s;*/
 }
 progress {
     width: 200px;
