@@ -89,8 +89,6 @@ progress::-webkit-progress-value {
 #status {
     background-color: black;
     color: white;
-    margin-top: -5px;
-    position: fixed;
     top: 91%;
     width: 100%;
 }
