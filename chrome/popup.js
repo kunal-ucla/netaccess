@@ -1,4 +1,4 @@
-var config;var speedi=0.0;
+var config, speedi=0.0;
 var hostname="hproxy.iitm.ac.in";
 var portnum=3128;
 var moder="fixed_servers";

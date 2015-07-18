@@ -6,11 +6,12 @@ var c=1;
 function saveldap(){
 	var username=document.getElementById("username2").value;
 	var time=$('input[name="time"]:checked').val();
-	var refresh=$('input[name="refresh"]:checked').val();
+	var rval=document.getElementById("refreshVal").value;
+	var rtype=$('#refreshType').val();
 	var password=document.getElementById("password2").value;
-        login(username,time,password,refresh);
+        login(username,time,password,rval,rtype);
 }
-function login(username,time,password,refresh){
+function login(username,time,password,rval,rtype){
 	$.post("https://netaccess.iitm.ac.in/account/login",
 	{userLogin:username,
 	userPassword:password},
@@ -20,7 +21,7 @@ function login(username,time,password,refresh){
 		invi.innerHTML+="<div class='error'>Save failed...Please check your credentials</div>";
 		}
 		else{
-		chrome.storage.sync.set({'roll':username,'pass':password,'time':time, 'refresh':refresh}, function() {
+		chrome.storage.sync.set({'roll':username,'pass':password,'time':time, 'rval':rval, 'rtype':rtype}, function() {
 		});
 		invi.innerHTML+="<div class='success'>Save Successful!</div>";
 		show();
@@ -28,9 +29,17 @@ function login(username,time,password,refresh){
 	});
 }
 function show(){
-	chrome.storage.sync.get({roll:'',pass:''}, function(result) {
-		if(result.roll == 1) $("#r1").prop("checked", true);
-		else $("#r2").prop("checked", true);
+	chrome.storage.sync.get({roll:'',pass:'',time:'',rval:'5', rtype:'60'}, function(result) {
+		if(result.time == 1){
+            $("#r1").prop("checked", true);
+            $("#r2").prop("checked", false);
+        }
+		else{
+            $("#r2").prop("checked", true);
+            $("#r1").prop("checked", false);
+        }
+        $("#refreshType").val(result.rtype);
+        document.getElementById("refreshVal").value = result.rval;
 		document.getElementById("username2").value = result.roll;
 		document.getElementById("password2").value = result.pass;
 	});

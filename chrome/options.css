@@ -1,52 +1,35 @@
-.options_bg {
-	background-image: url('internet4.jpg');
-	background-size: cover;
-	left:0;
-	right:0;
-	position:fixed;
-	height: 100%;
-	width: 100%;
-	z-index: -1;
-	-webkit-filter: blur(13px);
-    	-moz-filter: blur(13px);
-    	-o-filter: blur(13px);
-   	 -ms-filter: blur(13px);
-   	filter: blur(13px);
-}
 body {
 	font-family: Dosis !important;
 	margin-top: -30px;
 	padding-bottom: 40px;
 }
-input:focus {
+input:focus , select:focus{
 	outline: none;
 	border-color: #9ecaed;
 	box-shadow: 0 0 10px #9ecaed;
 }
 div {
-	height: 25px;
-	width: 240px;
-	border-radius: 5px;
-	padding-top: 5px;
 	font-family: Dosis;
-	font-weight: 400;
-	margin-bottom: 10px;
+    font-size: medium;
+    padding:5px;
+    margin:10px;
+    border-radius: 5px;
 }
 div.success {
 	background-color: rgba(137, 237, 105, 0.5);
 	border: 1px solid #375F2A;
 	color: #375F2A;
 	text-align: center;
+    width: 228px;
 }
 div.error {
 	background-color: rgba(255, 128, 128, 0.5);
 	border: 1px solid #FF1919;
 	color: #FF1919;
 	text-align: center;
+    width: 228px;
 }
 .Form {
-	max-width: 240px;
-	padding: 5px;
 	margin: 0 auto;
 }
 .Form-heading {
@@ -54,8 +37,7 @@ div.error {
 	font-weight: 100;
 	margin-top:30px;
 }
-input {
-	border-radius: 5px;
+input ,select{
 	font-family: Dosis;
 	border: 2px solid #dadada;
 	padding: 10px;
@@ -65,7 +47,6 @@ input {
 .Form-submit {
 	width: 230px;
 	height: 45px;
-	border-radius: 5px;
 	margin-top: 10px;
 	background-color: #0066FF;
 	border: 1px solid #0052CC;
@@ -77,4 +58,23 @@ input {
 .Form-submit:hover {
 	background-color: #0052CC;
 	box-shadow: 0 0 10px #9ecaed;
+}
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"] + label span {
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  margin: -1px 4px 0 0;
+  vertical-align: middle;
+  cursor: pointer;
+  -moz-border-radius: 10%;
+  border-radius: 10%;
+  background:url(sprite.png) -38px top no-repeat;
+}
+
+input[type="radio"]:checked + label span {
+  background:url(sprite.png) -57px top no-repeat;
 }

@@ -17,7 +17,7 @@
 // 	});
 // }
 function approve(){
-	chrome.storage.sync.get({roll:'',pass:'',time:'',refresh:'',status:''}, function(result) {
+	chrome.storage.sync.get({roll:'',pass:'',time:'',rval:'',status:''}, function(result) {
 		if(result.status=='#hproxy' || result.status=='#fbproxy') chrome.webRequest.onAuthRequired.addListener(callbackFn,{urls: ["<all_urls>"]},['blocking'] );
 		else if(result.status=='#oproxy');
 		else{
@@ -28,7 +28,7 @@ function approve(){
 					if(checkLogin != -1) console.log("Login failed...Please check your Username and Password");
 					else{
 						chrome.storage.sync.set({'status':"#netaccess"}, function() {});
-						chrome.storage.sync.get({roll:'',pass:'',status:'',refresh:''}, function(result2) {
+						chrome.storage.sync.get({status:''}, function(result2) {
 							$("button").removeClass("active").addClass("default");$(result2.status).removeClass("default").addClass("active");
 						});
 					}
@@ -44,7 +44,7 @@ function approve(){
 					}
 				}
 			);
-			if(result.refresh == 1){
+			if(result.rval != 0){
 				$.ajax({
 				type: "POST",
 				url: "https://netaccess.iitm.ac.in/account/approve",
@@ -81,7 +81,10 @@ function callbackFn(details) {
 
 function startBackgroundProcess() {
     approve();console.log("YIII");
-    setTimeout(startBackgroundProcess, 1000 * 60);
+    chrome.storage.sync.get({rval:'',rtype:''}, function(result) {
+        if(result.rval == 0) setTimeout(startBackgroundProcess, 1000 * 60 * 5);//defualt
+        else setTimeout(startBackgroundProcess, 1000 * result.rval * result.rtype);
+    });
 }
 
 window.onload = function(){
