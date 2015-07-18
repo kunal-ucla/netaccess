@@ -180,7 +180,7 @@ window.onload = function() {
 	chrome.storage.sync.get({roll:'',pass:'',status:''}, function(result) {
 		if(result.roll == ""){
 			$("#status").html("<center><b>Please save your details here</b></center>");
-			$("#opt").toggle();$("#options").toggleClass("butt act");
+			$("#opt").toggle();$("#welcome").toggle();$("#options").toggleClass("butt act");
 			var inter = setInterval(function(){
 				var ifram = $("#opt").contents().find("html").html();
 				var icheck = ifram.search("Successful!");
@@ -191,7 +191,7 @@ window.onload = function() {
 						$("button").removeClass("active").addClass("default");
 						$(result2.status).removeClass("default").addClass("active");
 					});
-					$("#opt").toggle();$("#options").toggleClass("butt act");
+					$("#opt").toggle();$("#welcome").toggle();$("#options").toggleClass("butt act");
 					clearInterval(inter);
 				}
 			},1000);
@@ -212,7 +212,7 @@ window.onload = function() {
 	document.getElementById("sysproxy").onclick = function() {proxyset(3);}
 	document.getElementById("oproxy").onclick = function() {proxyset(4);}
 	document.getElementById("options").onclick = function() {
-		$("#opt").toggle();$("#options").toggleClass("butt act");
+		$("#opt").toggle();$("#welcome").toggle();$("#options").toggleClass("butt act");
 	}
 	document.getElementById("checkspeed").onclick = function() {
 		var download=new Image();
