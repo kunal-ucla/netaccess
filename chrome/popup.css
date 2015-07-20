@@ -41,6 +41,7 @@ button.active {
     background-position-x: 50%;
     background-color: white !important;
 	color: red;
+    border: none;
 }
 button.active:hover{
     color:black !important;
