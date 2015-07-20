@@ -6,7 +6,16 @@ var c=1;
 function saveldap(){
 	var username=document.getElementById("username2").value;
 	var time=$('input[name="time"]:checked').val();
-	var rval=document.getElementById("refreshVal").value;
+	var rval=0;
+    if(document.getElementById('c1').checked){
+        rval=document.getElementById("refreshVal").value;
+        $("#refreshVal").prop('disabled', false);
+        $("#refreshType").prop('disabled', false);
+    }
+    else{
+        $("#refreshVal").prop('disabled', true);
+        $("#refreshType").prop('disabled', true);
+    }
 	var rtype=$('#refreshType').val();
 	var password=document.getElementById("password2").value;
         login(username,time,password,rval,rtype);
@@ -39,7 +48,18 @@ function show(){
             $("#r1").prop("checked", false);
         }
         $("#refreshType").val(result.rtype);
-        document.getElementById("refreshVal").value = result.rval;
+        if(result.rval==0){
+            document.getElementById("refreshVal").value = 5;
+            $('#c1').prop('checked', false);
+            $("#refreshVal").prop('disabled', true);
+            $("#refreshType").prop('disabled', true);
+        }
+        else{
+            document.getElementById("refreshVal").value = result.rval;
+            $('#c1').prop('checked', true);
+            $("#refreshVal").prop('disabled', false);
+            $("#refreshType").prop('disabled', false);
+        }
 		document.getElementById("username2").value = result.roll;
 		document.getElementById("password2").value = result.pass;
 	});
@@ -64,6 +84,16 @@ function check(){
 	else c=1;
 }
 window.onload = function() {
-	show();
+    show();
 	document.getElementById("save").onclick = function() {check();}
+    $('#c1').change(function(){
+        if(this.checked){
+            $("#refreshVal").prop('disabled', false);
+            $("#refreshType").prop('disabled', false);
+        }
+        else{
+            $("#refreshVal").prop('disabled', true);
+            $("#refreshType").prop('disabled', true);
+        }
+    });
 }

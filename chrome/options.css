@@ -78,3 +78,22 @@ input[type="radio"] + label span {
 input[type="radio"]:checked + label span {
   background:url(sprite.png) -57px top no-repeat;
 }
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"] + label span {
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  margin: -1px 4px 0 0;
+  vertical-align: middle;
+  cursor: pointer;
+  -moz-border-radius: 10%;
+  border-radius: 10%;
+  background:url(sprite.png) left top no-repeat;
+}
+
+input[type="checkbox"]:checked + label span {
+  background:url(sprite.png) -19px top no-repeat;
+}
