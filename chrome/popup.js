@@ -177,7 +177,16 @@ function callbackFn(details) {
     });
 }
 window.onload = function() {
-	chrome.storage.sync.get({roll:'',pass:'',status:''}, function(result) {
+    var colors = ["#FFBA03","#019C59","#751ec3","#186DEE","#DA4531","#0edbec","#00ff7f"];                
+    var rand = Math.floor(Math.random()*colors.length);           
+    $('#hproxy').css("background-color", colors[rand]);
+    $('#fbproxy').css("background-color", colors[(++rand)%7]);
+    $('#oproxy').css("background-color", colors[(++rand)%7]);
+    $('#netaccess').css("background-color", colors[(++rand)%7]);
+    $('#sysproxy').css("background-color", colors[(++rand)%7]);
+    $('#options').css("background-color", colors[(++rand)%7]);
+    $('#checkspeed').css("background-color", colors[(++rand)%7]);
+    chrome.storage.sync.get({roll:'',pass:'',status:''}, function(result) {
 		if(result.roll == ""){
 			$("#status").html("<center><b>Please save your details here</b></center>");
 			$("#opt").toggle();$("#welcome").toggle();$("#options").toggleClass("butt act");

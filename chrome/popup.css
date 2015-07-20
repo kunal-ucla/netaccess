@@ -16,17 +16,20 @@ button {
 }
 button:hover {
     background-color: grey !important;
+    color:white !important;
     /*transition: 0.5s;*/
 }
 button:focus {
     outline: 0;
 }
-button.default:hover {
-    color: white;
+button.default{
     border:none;
 }
-button.default {
-    border: 1px solid red;
+button.default:hover {
+    color: white;
+}
+button.butt{
+    border:none;
 }
 button.butt:hover {
     color: white;
@@ -36,11 +39,21 @@ button.active {
     background-image: url('Drawing.png');
     background-repeat: no-repeat;
     background-position-x: 50%;
+    background-color: white !important;
+	color: red;
+}
+button.active:hover{
+    color:black !important;
 }
 button.act {
     background-image: url('Drawing.png');
     background-repeat: no-repeat;
     background-position-x: 50%;
+    background-color: white !important;
+	color: red;
+}
+button.act:hover{
+    color:black !important;
 }
 progress {
     width: 200px;
